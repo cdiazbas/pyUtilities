@@ -61,14 +61,14 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.output_format not in SUPPORTED_WRITERS:
-        parser.error('Output format must be one of %s' % ' '.join(SUPPORTED_WRITERS.keys()))
+        parser.error('Output format must be one of {0!s}'.format(' '.join(SUPPORTED_WRITERS.keys())))
     else:
         output_writer_class = SUPPORTED_WRITERS[args.output_format]
 
     logging.basicConfig()
 
     for f in args.caption_file:
-        output_file = '%s.%s' % (os.path.splitext(f.name)[0],
+        output_file = '{0!s}.{1!s}'.format(os.path.splitext(f.name)[0],
                                  FILE_EXTENSIONS[args.output_format])
 
         print(output_file)
