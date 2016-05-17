@@ -1,0 +1,49 @@
+#!/usr/local/bin/python
+#cdiazbas@iac.es
+
+
+# ====================================================================
+def folderName(folder):
+    """Calcule the correct name
+
+    Returns:
+        The correct name
+    """
+
+    if len(folder.split()) > 1:
+        return '\ '.join(folder.split())
+    return folder
+
+
+# ====================================================================
+def folderSize():
+    """Size of each folder/ & .folder/
+
+    Returns:
+        Only the print.
+    """
+
+    import os
+    print('Total size: ')
+
+    import glob
+    list1 = glob.glob('*')
+    for elem in list1:
+        try:
+            # res = os.popen('du -hs '+i).read()
+            os.system('du -hs '+folderName(elem))
+        except:
+            pass  # files
+
+    list2 = glob.glob('.*')
+    for elem in list2:
+        try:
+            os.system('du -hs '+folderName(elem))
+        except:
+            pass  # files
+    return
+
+
+if __name__ == "__main__":
+    # Execute the command
+    folderSize()

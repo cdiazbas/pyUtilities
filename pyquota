@@ -1,0 +1,21 @@
+#!/usr/local/bin/python
+#cdiazbas@iac.es
+import os
+
+# Espacio HOME
+print('-------HOME --------')
+print('Used    Size   Free')
+os.system('quota -sQ > tmp.txt')
+tmp = open('tmp.txt')
+quota0 = tmp.readlines()[-1].split()
+print('{0}   {1}  {2}M'.format(quota0[0], quota0[1], int(quota0[1][:-1])-int(quota0[0][:-1])))
+os.system('rm tmp.txt')
+
+# Espacio SCRATCH
+print('-------SCRATCH -----')
+print('Used   Size    Free')
+os.system('df -h /scratch/ > tmp.txt')
+tmp = open('tmp.txt')
+quota0 = tmp.readlines()[-1].split()
+print('{0}    {1}    {2}'.format(quota0[2], quota0[1], quota0[3]))
+os.system('rm tmp.txt')
