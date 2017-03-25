@@ -69,7 +69,7 @@ def on_release():
 @remote.left_control.event
 def on_release():
     print('Release left')
-    keyboard1.release(Key.up)
+    keyboard1.release(Key.left)
 
 @remote.right_control.event
 def on_release():
